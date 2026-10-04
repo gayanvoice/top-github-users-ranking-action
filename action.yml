@@ -1,0 +1,19 @@
+name: 'JavaScript Action | File Handling and GitHub Operations'
+description: 'The repository shows core handling and git operations'
+
+inputs:
+  repository:
+    description: 'names of the repositories'
+    required: true
+
+  dev_mode:
+    description: 'dev mode'
+    required: true
+
+  advanced_mode:
+    description: 'advanced mode'
+    required: true
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

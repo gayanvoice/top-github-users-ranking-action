@@ -55,7 +55,7 @@ function introduction(snapshot) {
 }
 
 export function renderMarkdown(snapshot, options = {}) {
-    const rows = snapshot.users.map(user => `| <a name="${user.login.toLowerCase()}"></a>[@${user.login}](https://github.com/${user.login}) | <img src="${html(user.avatarUrl)}" alt="@${html(user.login)}" width="36" height="36"> | [![${BADGE_ALT}](${localBadge(snapshot, user)})](#${user.login.toLowerCase()}) | \`${badgeMarkdown(snapshot, user, options)}\` |`);
+    const rows = snapshot.users.map(user => `| <a name="${user.login.toLowerCase()}"></a>[@${user.login}](https://github.com/${user.login}) | <img src="${html(user.avatarUrl)}" alt="@${html(user.login)}" width="36" height="36"> | [![${BADGE_ALT}](${localBadge(snapshot, user)})](#${user.login.toLowerCase()}) | <details><summary>Copy</summary><pre>\`${badgeMarkdown(snapshot, user, options)}\`</pre></details> |`);
     return `# GitHub User Rankings: ${markdown(snapshot.countryName)}\n\n${introduction(snapshot)}\n| Username | Image | SVG | Copy snippet |\n| --- | --- | --- | --- |\n${rows.join('\n')}\n`;
 }
 

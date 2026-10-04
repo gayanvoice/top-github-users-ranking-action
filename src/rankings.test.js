@@ -104,7 +104,7 @@ test('generates Markdown rankings with user anchors and removes legacy outputs',
     assert.match(markdown, /\| Username \| Image \| SVG \| Copy snippet \|/);
     assert.ok(markdown.includes('| <a name="old-user"></a>[@old-user]'));
     const snippet = '[![gayanvoice/top-github-users](https://raw.githubusercontent.com/test/rankings/main/svg/sri_lanka/old-user.svg)](https://github.com/gayanvoice/top-github-users/blob/main/markdown/sri_lanka.md#old-user)';
-    assert.ok(markdown.includes(`| \`${snippet}\` |`));
+    assert.ok(markdown.includes(`| <details><summary>Copy</summary><pre>\`${snippet}\`</pre></details> |`));
     assert.ok(markdown.includes('[![gayanvoice/top-github-users](../svg/sri_lanka/old-user.svg)](#old-user)'));
     const israel = readFileSync(join(workspace, 'markdown/israel.md'), 'utf8');
     assert.ok(israel.includes('<a name="arthurzam"></a>[@ArthurZam](https://github.com/ArthurZam)'));

@@ -156,6 +156,9 @@ export async function generateRankings(countries, {
     await rm(join(directory, 'markdown', 'copy'), { recursive: true, force: true });
 
     await writeFile(join(directory, 'markdown', 'README.md'), renderCountryIndex(indexSnapshots));
+    await writeFile(join(directory, 'README.md'), renderCountryIndex(indexSnapshots, {
+        title: 'GitHub User Rankings', linkPrefix: 'markdown/'
+    }));
 
     // Remove legacy generated HTML assets while preserving other documentation.
     for (const filename of [...indexSnapshots.map(snapshot => `${snapshot.country}.html`), 'index.html', 'styles.css', 'rankings.js']) {

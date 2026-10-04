@@ -149,7 +149,8 @@ for (const entry of ['index.js', '../dist/index.cjs']) {
         assert.equal(git(directory, 'log', '-1', '--format=%s'), 'Action commit');
         assert.match(git(directory, 'show', '--format=', '--name-only'), /svg\/sri_lanka\/alice.svg/);
         assert.match(readFileSync(join(directory, 'svg/sri_lanka/alice.svg'), 'utf8'), /Sri Lanka Rank 1/);
-        assert.match(readFileSync(join(directory, 'markdown/sri_lanka.md'), 'utf8'), /Username \| Image \| SVG \| Copy snippet/);
+        assert.match(readFileSync(join(directory, 'svg/sri_lanka/alice.svg'), 'utf8'), /id="flag-icons-lk"/);
+        assert.match(readFileSync(join(directory, 'markdown/sri_lanka.md'), 'utf8'), /<th[^>]*>Index<\/th>\s*<th[^>]*>Image<\/th>\s*<th[^>]*>Username<\/th>\s*<th[^>]*>SVG<\/th>\s*<th[^>]*>Copy snippet<\/th>/);
         assert.equal(JSON.parse(readFileSync(join(directory, 'cache/sri_lanka.json'), 'utf8')).currentUserCount, 2);
         assert.equal(git(remote, 'rev-parse', 'refs/heads/main'), git(directory, 'rev-parse', 'HEAD'));
     });
